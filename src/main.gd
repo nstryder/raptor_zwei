@@ -43,11 +43,11 @@ class VariableValue extends Value:
 #endregion
 
 class Variable:
-	signal name_changed
+	signal name_changed(new_value: String)
 	var name: String:
 		set(value):
 			name = value
-			name_changed.emit()
+			name_changed.emit(name)
 	var values: Array[Value]
 
 
@@ -92,7 +92,9 @@ func update_visuals() -> void:
 			symbol_rep.text = "End"
 			symbol_rep.disabled = true
 		elif symbol is AssignmentSymbol:
-			symbol_rep.text = "Assignment"
+			var assignment_symbol := symbol as AssignmentSymbol
+			symbol_rep.text = str("SET ", assignment_symbol.variable.name)
+			assignment_symbol.variable.name_changed.connect(_on_variable_name_changed_assignment.bind(symbol_rep))
 		symbol_rep.pressed.connect(_on_symbol_pressed.bind(symbol))
 		flowchart.add_child(symbol_rep)
 
@@ -110,6 +112,10 @@ func _on_symbol_pressed(symbol: Symbol) -> void:
 	
 	properties_panel.current_tab = current_panel.get_index()
 	current_panel.bind_symbol(symbol)
+
+
+func _on_variable_name_changed_assignment(new_name: String, symbol_rep: VisualSymbol) -> void:
+	symbol_rep.text = str("SET ", new_name)
 
 
 # TODO: How do we know where to add the new symbol?
