@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pscrvs7kbw2f"]
 
 [ext_resource type="Script" uid="uid://c81w155k6kq70" path="res://src/main.gd" id="1_eewff"]
+[ext_resource type="Script" uid="uid://hwswjyp85qar" path="res://src/hi_dpi_scaler.gd" id="2_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://dmb7g2j2el1ds" path="res://src/controls/panels/assignment_panel.tscn" id="2_gh0ne"]
 
 [node name="Main" type="Control" unique_id=1824945940]
@@ -11,6 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eewff")
+
+[node name="HiDPIScaler" type="Node" parent="." unique_id=810346775]
+script = ExtResource("2_5q4o7")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=987106245]
 layout_mode = 1

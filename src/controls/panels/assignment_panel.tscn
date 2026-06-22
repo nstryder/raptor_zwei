@@ -36,5 +36,12 @@ size_flags_horizontal = 3
 text = "Number
 "
 
+[node name="ButtonVariable" type="Button" parent="ValueLine" index="2" unique_id=1376628667]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Variable"
+
+[connection signal="text_changed" from="VariableName" to="." method="_on_variable_name_text_changed"]
 [connection signal="pressed" from="ValueLine/ButtonString" to="." method="_on_button_string_pressed"]
 [connection signal="pressed" from="ValueLine/ButtonNumber" to="." method="_on_button_number_pressed"]
+[connection signal="pressed" from="ValueLine/ButtonVariable" to="." method="_on_button_variable_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0mulx10ouu8l"]
+
+[ext_resource type="Script" uid="uid://cpcpx1iufpkqu" path="res://src/controls/value_boxes/variable_box.gd" id="1_vcauw"]
+
+[node name="variable_box" type="VBoxContainer" unique_id=363334278]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vcauw")
+
+[node name="VariableSelect" type="OptionButton" parent="." unique_id=1063109931]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=499007637]
+layout_mode = 2
+text = "+"
+horizontal_alignment = 1

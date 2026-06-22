@@ -5,6 +5,8 @@ class_name Main
 const btn_add_symbol = preload("res://src/controls/button_add_symbol.tscn")
 const symbol_visual = preload("res://src/symbols/_base_symbol.tscn")
 
+#region Symbols
+
 @abstract class Symbol:
 	pass
 
@@ -16,11 +18,9 @@ class EndSymbol extends Symbol:
 
 class AssignmentSymbol extends Symbol:
 	var variable := Variable.new()
-		
 
-class Variable:
-	var name: String
-	var values: Array[Value]
+#endregion		
+#region Values
 
 @abstract class Value:
 	@abstract func get_value() -> Variant
@@ -35,6 +35,22 @@ class NumberValue extends Value:
 	func get_value() -> float:
 		return value
 
+class VariableValue extends Value:
+	var value: Variable
+	func get_value() -> Variable:
+		return value
+
+#endregion
+
+class Variable:
+	signal name_changed
+	var name: String:
+		set(value):
+			name = value
+			name_changed.emit()
+	var values: Array[Value]
+
+
 enum PanelTypes {
 	ASSIGNMENT
 }
@@ -48,7 +64,7 @@ var main_chart: Array[Symbol] = [
 # As in, when new assignment symbol is added, add a new variable here
 # When the symbol is deleted, delete the variable from here too
 # Oh god you'll need a way to error on stale references...
-var variable_list: Array[Variable] = []
+static var variable_list: Array[Variable] = []
 
 @onready var flowchart: VBoxContainer = %Flowchart
 @onready var properties_panel: TabContainer = %PropertiesPanel
