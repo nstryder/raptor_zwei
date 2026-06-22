@@ -13,6 +13,7 @@ text = "Set..."
 [node name="VariableName" type="LineEdit" parent="." index="1" unique_id=271343671]
 layout_mode = 2
 placeholder_text = "Enter Variable name here..."
+emoji_menu_enabled = false
 
 [node name="Label2" type="Label" parent="." index="2" unique_id=2033610111]
 layout_mode = 2

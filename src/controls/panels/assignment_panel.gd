@@ -53,8 +53,11 @@ func _on_button_variable_pressed() -> void:
 	create_variable_box(new_variable_value)
 	
 
-# TODO: Validate variable names
-# TODO: Tie changes to variable name
 func _on_variable_name_text_changed(_new_text: String) -> void:
 	var assignment_symbol := symbol as Main.AssignmentSymbol
 	assignment_symbol.variable.name = _new_text
+
+	# Assign it back since the setter enforces variable naming rules
+	var old_caret_column := _variable_name.caret_column
+	_variable_name.text = assignment_symbol.variable.name
+	_variable_name.caret_column = old_caret_column - (_new_text.length() - assignment_symbol.variable.name.length())

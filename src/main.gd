@@ -47,6 +47,21 @@ class Variable:
 	var name: String:
 		set(value):
 			name = value
+			name = name.strip_edges()
+
+			# Enforce alphanumeric input, no spaces allowed either
+			var regex := RegEx.create_from_string("[^A-Za-z0-9_]")
+			var result := regex.search(name)
+			if result:
+				print(result.get_string())
+				name = name.remove_chars(result.get_string())
+			
+			# No numbers allowed at start
+			regex = RegEx.create_from_string("^([0-9]+)(.*)")
+			result = regex.search(name)
+			if result:
+				name = result.get_string(2)
+
 			name_changed.emit(name)
 	var values: Array[Value]
 
