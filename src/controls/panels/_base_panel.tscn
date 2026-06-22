@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cx66h58jpws37"]
+
+[ext_resource type="Script" uid="uid://dhdad5fguyafw" path="res://src/controls/panels/_base_panel.gd" id="1_korvs"]
+
+[node name="BasePanel" type="VBoxContainer" unique_id=1792516015]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_korvs")

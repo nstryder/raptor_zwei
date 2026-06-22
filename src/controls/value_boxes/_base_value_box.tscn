@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cht5vt85qt060"]
+
+[node name="BaseValueBox" type="VBoxContainer" unique_id=1681468099]
+offset_right = 40.0
+offset_bottom = 40.0

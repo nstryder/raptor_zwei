@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dmb7g2j2el1ds"]
+
+[ext_resource type="PackedScene" uid="uid://cx66h58jpws37" path="res://src/controls/panels/_base_panel.tscn" id="1_87wl6"]
+[ext_resource type="Script" uid="uid://ctm4gryyry525" path="res://src/controls/panels/assignment_panel.gd" id="2_gailt"]
+
+[node name="AssignmentPanel" unique_id=1792516015 instance=ExtResource("1_87wl6")]
+script = ExtResource("2_gailt")
+
+[node name="Label" type="Label" parent="." index="0" unique_id=1583673235]
+layout_mode = 2
+text = "Set..."
+
+[node name="VariableName" type="LineEdit" parent="." index="1" unique_id=271343671]
+layout_mode = 2
+placeholder_text = "Enter Variable name here..."
+
+[node name="Label2" type="Label" parent="." index="2" unique_id=2033610111]
+layout_mode = 2
+text = "To..."
+
+[node name="ValueBox" type="VBoxContainer" parent="." index="3" unique_id=140057557]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ValueLine" type="HBoxContainer" parent="." index="4" unique_id=1731897755]
+layout_mode = 2
+
+[node name="ButtonString" type="Button" parent="ValueLine" index="0" unique_id=1428997738]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "String"
+
+[node name="ButtonNumber" type="Button" parent="ValueLine" index="1" unique_id=1876202396]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number
+"
+
+[connection signal="pressed" from="ValueLine/ButtonString" to="." method="_on_button_string_pressed"]
+[connection signal="pressed" from="ValueLine/ButtonNumber" to="." method="_on_button_number_pressed"]

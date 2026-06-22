@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ddfdetcgjslki"]
+
+[node name="ButtonAddSymbol" type="Button" unique_id=1803774221]
+text = "+"

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cq06kjkdt4xjm"]
+
+[ext_resource type="Script" uid="uid://6c8h7vua0rn2" path="res://src/controls/value_boxes/string_box.gd" id="1_u2osw"]
+
+[node name="StringBox" type="VBoxContainer" unique_id=1161066063]
+size_flags_horizontal = 3
+script = ExtResource("1_u2osw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=45612215]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer" unique_id=623964327]
+layout_mode = 2
+text = "\""
+
+[node name="StringValue" type="TextEdit" parent="HBoxContainer" unique_id=1283540215]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Type a sentence..."
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=185004378]
+layout_mode = 2
+text = "\""
+
+[node name="Label" type="Label" parent="." unique_id=1912295679]
+layout_mode = 2
+text = "+"
+horizontal_alignment = 1

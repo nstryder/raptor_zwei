@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://nlwrohdjwvsj"]
+
+[ext_resource type="Script" uid="uid://ii0kvr0a83af" path="res://src/symbols/_base_symbol.gd" id="1_v6d2v"]
+
+[node name="BaseSymbol" type="Button" unique_id=294096246]
+offset_right = 32.0
+offset_bottom = 24.0
+script = ExtResource("1_v6d2v")
