@@ -3,7 +3,7 @@ class_name Main
 
 
 const btn_add_symbol = preload("res://src/controls/button_add_symbol.tscn")
-const symbol_visual = preload("res://src/symbols/_base_symbol.tscn")
+const symbol_visual = preload("res://src/visual_symbols/assignment_visual.tscn")
 
 #region Symbols
 
@@ -66,10 +66,6 @@ class Variable:
 	var values: Array[Value]
 
 
-enum PanelTypes {
-	ASSIGNMENT
-}
-
 var main_chart: Array[Symbol] = [
 	StartSymbol.new(),
 	EndSymbol.new()
@@ -109,7 +105,7 @@ func update_visuals() -> void:
 		elif symbol is AssignmentSymbol:
 			var assignment_symbol := symbol as AssignmentSymbol
 			symbol_rep.text = str("SET ", assignment_symbol.variable.name)
-			assignment_symbol.variable.name_changed.connect(_on_variable_name_changed_assignment.bind(symbol_rep))
+			assignment_symbol.variable.name_changed.connect((symbol_rep as AssignmentVisual)._on_variable_name_changed)
 		symbol_rep.pressed.connect(_on_symbol_pressed.bind(symbol))
 		flowchart.add_child(symbol_rep)
 
@@ -127,10 +123,6 @@ func _on_symbol_pressed(symbol: Symbol) -> void:
 	
 	properties_panel.current_tab = current_panel.get_index()
 	current_panel.bind_symbol(symbol)
-
-
-func _on_variable_name_changed_assignment(new_name: String, symbol_rep: VisualSymbol) -> void:
-	symbol_rep.text = str("SET ", new_name)
 
 
 # TODO: How do we know where to add the new symbol?

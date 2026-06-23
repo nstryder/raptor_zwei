@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dl1o8mvvia8xd"]
+
+[ext_resource type="PackedScene" uid="uid://nlwrohdjwvsj" path="res://src/visual_symbols/_base_visual_symbol.tscn" id="1_en5q4"]
+[ext_resource type="Script" uid="uid://hk2jwngn2vs3" path="res://src/visual_symbols/assignment_visual.gd" id="2_x2llr"]
+
+[node name="AssignmentVisual" unique_id=294096246 instance=ExtResource("1_en5q4")]
+script = ExtResource("2_x2llr")
