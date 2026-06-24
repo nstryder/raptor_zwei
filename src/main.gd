@@ -18,6 +18,31 @@ class EndSymbol extends Symbol:
 
 class AssignmentSymbol extends Symbol:
 	var variable := Variable.new()
+	var values: Array[Value]
+
+class ReassignmentSymbol extends Symbol:
+	var variable: Variable
+	var values: Array[Value]
+	func _init(variable_ref: Variable) -> void:
+		variable = variable_ref
+
+class OutputSymbol extends Symbol:
+	var values: Array[Value]
+
+class InputSymbol extends Symbol:
+	var variable := Variable.new()
+	var prompt: Array[Value]
+
+class SelectionSymbol extends Symbol:
+	# TODO: Implement conditions
+	var condition: Variant
+	var yes_branch: Array[Symbol] = []
+	var no_branch: Array[Symbol] = []
+
+class LoopSymbol extends Symbol:
+	var condition: Variant
+	var inside: Array[Symbol]
+
 
 #endregion		
 #region Values
@@ -66,7 +91,6 @@ class Variable:
 				name = result.get_string(2)
 
 			name_changed.emit(name)
-	var values: Array[Value]
 	var type: Type
 
 
