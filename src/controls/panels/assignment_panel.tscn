@@ -17,32 +17,65 @@ emoji_menu_enabled = false
 
 [node name="Label2" type="Label" parent="." index="2" unique_id=2033610111]
 layout_mode = 2
+text = "As a..."
+
+[node name="OptionButton" type="OptionButton" parent="." index="3" unique_id=1978900017]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "String"
+popup/item_0/id = 0
+popup/item_1/text = "Number"
+popup/item_1/id = 1
+
+[node name="Label3" type="Label" parent="." index="4" unique_id=705934069]
+layout_mode = 2
 text = "To..."
 
-[node name="ValueBox" type="VBoxContainer" parent="." index="3" unique_id=140057557]
+[node name="ValueBox" type="VBoxContainer" parent="." index="5" unique_id=140057557]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ValueLine" type="HBoxContainer" parent="." index="4" unique_id=1731897755]
+[node name="TypeLines" type="TabContainer" parent="." index="6" unique_id=988675627]
+unique_name_in_owner = true
 layout_mode = 2
+current_tab = 0
+tabs_visible = false
+tab_focus_mode = 0
 
-[node name="ButtonString" type="Button" parent="ValueLine" index="0" unique_id=1428997738]
+[node name="StringLine" type="HBoxContainer" parent="TypeLines" index="1" unique_id=1731897755]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ButtonString" type="Button" parent="TypeLines/StringLine" index="0" unique_id=1428997738]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "String"
 
-[node name="ButtonNumber" type="Button" parent="ValueLine" index="1" unique_id=1876202396]
+[node name="ButtonVariable" type="Button" parent="TypeLines/StringLine" index="1" unique_id=1376628667]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Variable"
+
+[node name="NumberLine" type="HBoxContainer" parent="TypeLines" index="2" unique_id=1415108191]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ButtonNumber" type="Button" parent="TypeLines/NumberLine" index="0" unique_id=1876202396]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Number
 "
 
-[node name="ButtonVariable" type="Button" parent="ValueLine" index="2" unique_id=1376628667]
+[node name="ButtonVariable" type="Button" parent="TypeLines/NumberLine" index="1" unique_id=1433854293]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Variable"
 
 [connection signal="text_changed" from="VariableName" to="." method="_on_variable_name_text_changed"]
-[connection signal="pressed" from="ValueLine/ButtonString" to="." method="_on_button_string_pressed"]
-[connection signal="pressed" from="ValueLine/ButtonNumber" to="." method="_on_button_number_pressed"]
-[connection signal="pressed" from="ValueLine/ButtonVariable" to="." method="_on_button_variable_pressed"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="TypeLines/StringLine/ButtonString" to="." method="_on_button_string_pressed"]
+[connection signal="pressed" from="TypeLines/StringLine/ButtonVariable" to="." method="_on_button_variable_pressed"]
+[connection signal="pressed" from="TypeLines/NumberLine/ButtonNumber" to="." method="_on_button_number_pressed"]
+[connection signal="pressed" from="TypeLines/NumberLine/ButtonVariable" to="." method="_on_button_variable_pressed"]

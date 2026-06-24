@@ -43,6 +43,10 @@ class VariableValue extends Value:
 #endregion
 
 class Variable:
+	enum Type {
+		STRING,
+		NUMBER
+	}
 	signal name_changed(new_value: String)
 	var name: String:
 		set(value):
@@ -53,7 +57,6 @@ class Variable:
 			var regex := RegEx.create_from_string("[^A-Za-z0-9_]")
 			var result := regex.search(name)
 			if result:
-				print(result.get_string())
 				name = name.remove_chars(result.get_string())
 			
 			# No numbers allowed at start
@@ -64,6 +67,7 @@ class Variable:
 
 			name_changed.emit(name)
 	var values: Array[Value]
+	var type: Type
 
 
 var main_chart: Array[Symbol] = [

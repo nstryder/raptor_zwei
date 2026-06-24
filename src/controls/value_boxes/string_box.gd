@@ -11,4 +11,3 @@ func bind_string_value(string_value: Main.StringValue) -> void:
 
 func _on_string_input_text_changed(string_value: Main.StringValue) -> void:
 	string_value.value = string_input.text
-	print(string_value.get_value())

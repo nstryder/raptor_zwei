@@ -6,6 +6,7 @@ const variable_box_scene: PackedScene = preload("res://src/controls/value_boxes/
 
 @onready var _variable_name: LineEdit = $VariableName
 @onready var _value_box: VBoxContainer = %ValueBox
+@onready var _type_lines: TabContainer = %TypeLines
 
 # TODO: Handle NumberValues
 func bind_symbol(selected_symbol: Main.Symbol) -> void:
@@ -61,3 +62,12 @@ func _on_variable_name_text_changed(_new_text: String) -> void:
 	var old_caret_column := _variable_name.caret_column
 	_variable_name.text = assignment_symbol.variable.name
 	_variable_name.caret_column = old_caret_column - (_new_text.length() - assignment_symbol.variable.name.length())
+
+
+func _on_option_button_item_selected(idx: int) -> void:
+	var assignment_symbol := symbol as Main.AssignmentSymbol
+	assignment_symbol.variable.type = idx as Main.Variable.Type
+	_type_lines.current_tab = idx
+	assignment_symbol.variable.values.clear()
+	for child in _value_box.get_children():
+		child.queue_free()
