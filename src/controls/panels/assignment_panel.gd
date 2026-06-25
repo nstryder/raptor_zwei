@@ -16,7 +16,7 @@ func bind_symbol(selected_symbol: Main.Symbol) -> void:
 	_variable_name.text = assignment_symbol.variable.name
 	for node in _value_box.get_children():
 		node.queue_free()
-	for value: Main.Value in assignment_symbol.variable.values:
+	for value: Main.Value in assignment_symbol.values:
 		if value is Main.StringValue:
 			create_string_box(value as Main.StringValue)
 		elif value is Main.VariableValue:
@@ -38,7 +38,7 @@ func create_variable_box(variable_value: Main.VariableValue) -> void:
 func _on_button_string_pressed() -> void:
 	var assignment_symbol := symbol as Main.AssignmentSymbol
 	var new_string_value := Main.StringValue.new()
-	assignment_symbol.variable.values.append(new_string_value)
+	assignment_symbol.values.append(new_string_value)
 	create_string_box(new_string_value)
 
 
@@ -50,7 +50,7 @@ func _on_button_number_pressed() -> void:
 func _on_button_variable_pressed() -> void:
 	var assignment_symbol := symbol as Main.AssignmentSymbol
 	var new_variable_value := Main.VariableValue.new()
-	assignment_symbol.variable.values.append(new_variable_value)
+	assignment_symbol.values.append(new_variable_value)
 	create_variable_box(new_variable_value)
 	
 
@@ -68,6 +68,6 @@ func _on_option_button_item_selected(idx: int) -> void:
 	var assignment_symbol := symbol as Main.AssignmentSymbol
 	assignment_symbol.variable.type = idx as Main.Variable.Type
 	_type_lines.current_tab = idx
-	assignment_symbol.variable.values.clear()
+	assignment_symbol.values.clear()
 	for child in _value_box.get_children():
 		child.queue_free()
