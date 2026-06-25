@@ -153,6 +153,7 @@ func _on_symbol_pressed(symbol: Symbol) -> void:
 	current_panel.bind_symbol(symbol)
 
 
+# @action
 # TODO: How do we know where to add the new symbol?
 # Stopgap for now...we'll just use the index (won't work once we have branches)
 func _on_add_symbol(idx: int) -> void:
@@ -162,6 +163,7 @@ func _on_add_symbol(idx: int) -> void:
 	update_visuals()
 
 
+# @action
 # TODO
 func _on_remove_symbol(_symbol: Symbol) -> void:
 	# TODO: When removing AssignmentSymbol, also remove its variable from the list

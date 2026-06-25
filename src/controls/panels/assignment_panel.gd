@@ -23,12 +23,14 @@ func bind_symbol(selected_symbol: Main.Symbol) -> void:
 			create_variable_box(value as Main.VariableValue)
 
 
+# @action
 func create_string_box(string_value: Main.StringValue) -> void:
 	var string_box: StringBox = string_box_scene.instantiate()
 	_value_box.add_child(string_box)
 	string_box.bind_string_value(string_value)
 
 
+# @action
 func create_variable_box(variable_value: Main.VariableValue) -> void:
 	var variable_box: VariableBox = variable_box_scene.instantiate()
 	_value_box.add_child(variable_box)
