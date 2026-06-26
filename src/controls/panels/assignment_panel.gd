@@ -3,6 +3,7 @@ class_name AssignmentPanel
 
 const string_box_scene: PackedScene = preload("res://src/controls/value_boxes/string_box.tscn")
 const variable_box_scene: PackedScene = preload("res://src/controls/value_boxes/variable_box.tscn")
+const number_box_scene: PackedScene = preload("res://src/controls/value_boxes/number_box.tscn")
 
 @onready var _variable_name: LineEdit = $VariableName
 @onready var _value_box: VBoxContainer = %ValueBox
@@ -21,6 +22,8 @@ func bind_symbol(selected_symbol: Main.Symbol) -> void:
 			create_string_box(value as Main.StringValue)
 		elif value is Main.VariableValue:
 			create_variable_box(value as Main.VariableValue)
+		elif value is Main.NumberValue:
+			create_number_box(value as Main.NumberValue)
 
 
 # @action
@@ -28,6 +31,12 @@ func create_string_box(string_value: Main.StringValue) -> void:
 	var string_box: StringBox = string_box_scene.instantiate()
 	_value_box.add_child(string_box)
 	string_box.bind_string_value(string_value)
+
+
+func create_number_box(number_value: Main.NumberValue) -> void:
+	var number_box: NumberBox = number_box_scene.instantiate()
+	_value_box.add_child(number_box)
+	number_box.bind_number_value(number_value)
 
 
 # @action
@@ -44,10 +53,12 @@ func _on_button_string_pressed() -> void:
 	create_string_box(new_string_value)
 
 
-# TODO
 func _on_button_number_pressed() -> void:
-	pass # Replace with function body.
-
+	var assignment_symbol := symbol as Main.AssignmentSymbol
+	var new_number_value := Main.NumberValue.new()
+	assignment_symbol.values.append(new_number_value)
+	create_number_box(new_number_value)
+	
 
 func _on_button_variable_pressed() -> void:
 	var assignment_symbol := symbol as Main.AssignmentSymbol

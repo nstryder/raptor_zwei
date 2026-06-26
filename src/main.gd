@@ -5,6 +5,13 @@ class_name Main
 const btn_add_symbol = preload("res://src/controls/button_add_symbol.tscn")
 const symbol_visual = preload("res://src/visual_symbols/assignment_visual.tscn")
 
+enum Operator {
+	ADD,
+	SUBTRACT,
+	MULTIPLY,
+	DIVIDE
+}
+
 #region Symbols
 
 @abstract class Symbol:
@@ -57,6 +64,7 @@ class StringValue extends Value:
 
 class NumberValue extends Value:
 	var value: float
+	var operator := Main.Operator.ADD
 	func get_value() -> float:
 		return value
 

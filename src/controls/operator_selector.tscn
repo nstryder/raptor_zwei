@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://goftsj27jy8y"]
+
+[ext_resource type="Script" uid="uid://66xy60dy8gj2" path="res://src/controls/operator_selector.gd" id="1_hwwfs"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lwrwe"]
+
+[node name="OperatorSelector" type="HBoxContainer" unique_id=1690892498]
+script = ExtResource("1_hwwfs")
+
+[node name="Add" type="Button" parent="." unique_id=1609839207]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_lwrwe")
+text = "+"
+
+[node name="Subtract" type="Button" parent="." unique_id=440103672]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lwrwe")
+text = "-"
+
+[node name="Multiply" type="Button" parent="." unique_id=317170580]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lwrwe")
+text = "*"
+
+[node name="Divide" type="Button" parent="." unique_id=2102458352]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_lwrwe")
+text = "/"
